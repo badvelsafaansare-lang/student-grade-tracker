@@ -11,14 +11,22 @@ public class Main
     for(int s = 1;s<=students;s++)
     {
      System.out.println("\nStudent" + s);
+     if(s>1)
+     {
+         sc.nextLine();
+     }
      System.out.println("Enter student name:");
-     String name = sc.next();
+     String name = sc.nextLine();
      ArrayList<Integer>marks = new ArrayList<>();
+     ArrayList<String>subjects = new ArrayList<>();
      System.out.println("Enter number of subjets:");
      int n = sc.nextInt();
      for(int i = 1;i<=n;i++)
       {
-        System.out.print("Enter marks for subject" + i + ":");
+        sc.nextLine();
+        System.out.print("Enter subject" + i + "name:");
+        String subjectName = sc.nextLine();
+        System.out.print("Enter marks for" + subjectName + ":");
         int mark = sc.nextInt();
         while(mark<0||mark>100)
         {
@@ -26,6 +34,7 @@ public class Main
           System.out.print("Enter marks again:");
           mark = sc.nextInt();
         }
+         subjects.add(subjectName);
          marks.add(mark);
       }
        int sum = 0;
@@ -51,33 +60,13 @@ public class Main
        boolean passed = true;
        for(int mark:marks)
       {
-        if(mark<40)
+        if(mark<35)
         {
           passed = false;
           break;
         }
       }
-       char grade;
-       if(average>=90)
-      {
-        grade='A';
-      }
-        else if(average>=80)
-        {
-          grade='B';
-        }
-        else if(average>=70)
-        {
-          grade='C';
-        }
-        else if(average>=60)
-        {
-          grade='D';
-        }
-         else
-         {
-           grade = 'F';
-         }
+       char grade = calculateGrade(average,passed);
          System.out.println("\n---Student Result---");
          System.out.println("Student Name:" + name);
          System.out.println("Marks:" + marks);
@@ -94,7 +83,29 @@ public class Main
           System.out.println("Grade:" + grade);
     }
     sc.close();
- } 
+ }
+ public static char calculateGrade(double average,boolean passed)
+ {
+     if(!passed)
+     {
+         return 'F';
+     }else if(average>=85)
+           {
+               return 'A';          
+           }else if(average>=75)
+                 {
+                     return 'B';
+                 }else if(average>=65)
+                       {
+                           return 'C';
+                       }else
+                        {
+                            return 'D';
+                        }
+ }
 }
+
+      
+
 
       
