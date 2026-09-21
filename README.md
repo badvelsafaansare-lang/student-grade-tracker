@@ -1,4 +1,7 @@
 # Student Grade Tracker
+## Internship Project
+
+Developed as part of the **CodeAlpha Java Programming Internship – September 2026**.
 
 A Java-based Student Grade Tracker that manages student marks, calculates averages, grades, results, rankings, and generates individual report cards.
 
